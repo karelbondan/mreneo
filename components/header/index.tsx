@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 export default function Header() {
   const pathName = usePathname();
-  const formattedPathName = pathName.replace("/", "").replace("-", " ");
+  const formattedPathName = pathName.replace("/", "").replace("_", " ");
   return (
     <div className="border w-full justify-between flex p-6">
       <Link href={"/"}>

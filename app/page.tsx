@@ -1,5 +1,5 @@
-import DashboardCard from "@/components/header/cards/dashboard";
-import TimeCard from "@/components/header/cards/time";
+import DashboardCard from "@/components/cards/dashboard";
+import TimeCard from "@/components/cards/time";
 
 export default function Home() {
   return (

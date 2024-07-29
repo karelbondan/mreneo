@@ -31,7 +31,7 @@ export default function DashboardCard() {
                 <p className="font-bold">Pendapatan bersih</p>
                 <p>Rp{dashboardData.pengeluaran - dashboardData.pemasukan}</p>
             </div>
-            <Link href={'/data-harian'}>
+            <Link href={'/data_harian'}>
                 <button className="bg-green-600 active:scale-95 transition-all text-white p-2 rounded-lg mt-3 w-full">Lihat rincian</button>
             </Link>
         </div>
