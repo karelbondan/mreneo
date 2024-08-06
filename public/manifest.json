@@ -1,0 +1,27 @@
+{
+    "name": "Mreneo Management",
+    "short_name": "Mreneo Management",
+    "theme_color": "#00ff00",
+    "background_color": "#ffffff",
+    "display": "fullscreen",
+    "orientation": "natural",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "/vercel.svg",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/vercel.svg",
+            "type": "image/png",
+            "sizes": "256x256"
+        },
+        {
+            "src": "/vercel.svg",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
