@@ -1,3 +1,4 @@
+import SpinnerInput from '@/components/input/spinner';
 import CustomPopup from '@/components/popup';
 import { PopupHandle, UbahPesananCardProps } from '@/types/common'
 import { formatHarga } from '@/utils/commonfunc';
@@ -6,7 +7,6 @@ import React, { useRef, useState } from 'react'
 export default function UbahPesananCard(props: UbahPesananCardProps) {
     const { data } = props;
     const [jumlah, setjumlah] = useState(data.jumlah);
-    const [spinnerVisible, setspinnerVisible] = useState(false);
     const deleteConfirmation = useRef<PopupHandle>(null);
     return (
         <div>
@@ -30,25 +30,7 @@ export default function UbahPesananCard(props: UbahPesananCardProps) {
                 <div className='w-full space-y-1'>
                     <div className='flex items-center justify-between space-x-3'>
                         <h2 className='font-semibold text-lg'>{data.nama_makanan}</h2>
-                        <div className='relative flex items-center space-x-2'>
-                            <div onClick={() => setspinnerVisible(false)}
-                                className={`${spinnerVisible ? "visible" : "invisible"} fixed top-0 left-0 w-full h-full z-10 transition-all`} />
-                            <div className={`${spinnerVisible ? "visible opacity-100 translate-y-1" : "invisible opacity-0 translate-y-0"} absolute top-full right-0 w-fit flex p-2 bg-white rounded-lg z-20 transition-all`}>
-                                {/* selama lebih dari 1 bisa dikurang, selain itu biarin aja */}
-                                <button onClick={() => { setjumlah(jumlah > 1 ? jumlah - 1 : jumlah) }} className='size-10 border bg-white active:bg-gray-200 transition-all'>-</button>
-                                {/* tambah jumlah makanan */}
-                                <button onClick={() => { setjumlah(jumlah + 1) }} className='size-10 border border-l-0 bg-white active:bg-gray-200 transition-all'>+</button>
-                            </div>
-                            <p className='text-xl'>×</p>
-                            <input
-                                type='number'
-                                min={1}
-                                value={jumlah}
-                                onChange={(e) => setjumlah(parseInt(e.target.value))}
-                                onClick={() => setspinnerVisible(true)}
-                                className={`${spinnerVisible ? "z-30" : "z-0"} w-10 h-9 text-center rounded-lg`}
-                            />
-                        </div>
+                        <SpinnerInput jumlah={jumlah} setJumlah={setjumlah} />
                     </div>
                     <hr className='border-black/20' />
                     <div className='flex justify-between'>

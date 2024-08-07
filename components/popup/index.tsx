@@ -20,10 +20,10 @@ const CustomPopup = forwardRef<PopupHandle, PopUpProps>((props, ref) => {
         <div className={`${visible ? "visible opacity-100" : "invisible opacity-0"} fixed w-full h-full top-0 left-0 bg-black/30 z-10 transition-all`}
             onClick={() => setvisible(false)}
         >
-            <div className='flex items-center justify-center h-full'>
+            <div className='flex items-center justify-center h-full w-full'>
                 <div
                     onClick={(e) => e.stopPropagation()}
-                    className={`${visible ? "translate-y-0" : "-translate-y-2"} bg-white p-5 w-[90%] space-y-2 rounded-xl transition-all`}
+                    className={`${visible ? "visible opacity-100" : "invisible opacity-0 -translate-y-2"} bg-white p-5 w-[90%] space-y-2 rounded-xl transition-all`}
                 >
                     <div className='flex items-center justify-between'>
                         <p className='font-semibold text-lg'>{props.title}</p>
@@ -36,14 +36,14 @@ const CustomPopup = forwardRef<PopupHandle, PopUpProps>((props, ref) => {
                     <hr className='border-black/20' />
                     <p>{props.description}</p>
                     {props.children}
-                    <div className={`${props.negativeButtonTitle ? "space-x-2" : ""} flex items-center justify-center`}>
+                    <div className={`${props.negativeButtonTitle ? "space-x-2" : ""} flex items-center justify-center pt-2`}>
                         {/* xxx?.() => optional chaining to invoke optional prop method */}
-                        <button className={`${props.negativeButtonTitle ? "block" : "hidden"} px-5 py-2 bg-blue-200 rounded-lg active:scale-90 transition-all`}
+                        <button className={`${props.negativeButtonTitle ? "block" : "hidden"} px-5 py-2 ${props.negativeButtonColor ? props.negativeButtonColor : "bg-blue-200"} rounded-lg active:scale-90 transition-all`}
                             onClick={() => { props.onNegativeClick?.(); dismissOnOptionClick && setvisible(false); }}
                         >
                             {props.negativeButtonTitle}
                         </button>
-                        <button className='px-5 py-2 bg-green-300 rounded-lg active:scale-90 transition-all font-semibold'
+                        <button className={`px-5 py-2 ${props.positiveButtonColor ? props.positiveButtonColor : "bg-green-300"} rounded-lg active:scale-90 transition-all font-semibold`}
                             onClick={() => { props.onPositiveClick?.(); dismissOnOptionClick && setvisible(false); }}
                         >
                             {props.positiveButtonTitle}
