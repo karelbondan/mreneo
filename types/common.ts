@@ -7,8 +7,14 @@ export type DashboardData = {
     terjual: number;
 }
 
-export type DataPesanan = {
+export type MakananData = {
     _id: string;
+    identifier: string;
+    nama_makanan: string;
+    harga: number;
+}
+
+export type DataPesanan = {
     id_makanan: string;
     identifier: string;
     nama_makanan: string;
@@ -17,7 +23,7 @@ export type DataPesanan = {
 }
 
 export type DaftarPesanan = {
-    _id: string;
+    _id?: string;
     date: string;
     pesanan: DataPesanan[];
     total_harga: number;
@@ -32,20 +38,31 @@ export type PesananCardProps = {
 export type UbahPesananCardProps = {
     data: DataPesanan;
     makanan_no: number;
+    onHapusClick: () => void;
+}
+
+export type DropDownHandle = {
+    reset: () => void;
 }
 
 export type DropDownProps = {
     title: string;
     description?: string;
-    pilihan: string[];
+    pilihan: any[];
+    // should be the same size as 'pilihan' with the same
+    // item order
+    pilihanString: string[];
+    defaultValue: string;
     onChange?: (value: any) => void
 }
 
 export type DropDownItem = {
-    onSelect: Dispatch<SetStateAction<string>>;
+    // onSelect: Dispatch<SetStateAction<string>>;
+    onSelect: (selectedValue: any, selectedTitle: string) => void;
     setVisible: Dispatch<SetStateAction<boolean>>;
     identifier?: string;
-    value: string;
+    title: string;
+    value: any
 }
 
 export interface PopUpProps extends PropsWithChildren {
@@ -63,6 +80,7 @@ export interface PopUpProps extends PropsWithChildren {
 export type PopupHandle = {
     show: () => void;
     hide: () => void;
+    visible: boolean;
 }
 
 export interface setPesanan {
@@ -72,14 +90,21 @@ export interface setPesanan {
 }
 
 export type TambahMakananPopupProps = {
-    setPesanan: ({ index, data, action }: setPesanan) => void;
-    onPositiveClick?: () => void;
+    setPesanan?: ({ index, data, action }: setPesanan) => void;
+    onPositiveClick?: (value: any) => void;
     onNegativeClick?: () => void;
+    // onTambahKlik?: ({ value }: { value: DataPesanan }) => void
 }
 
 export type GenericPopupProps = {
     onPositiveClick?: () => void;
     onNegativeClick?: () => void;
+}
+
+export type MakananSudahAdaProps = {
+    onPositiveClick?: () => void;
+    onNegativeClick?: () => void;
+    namaMakanan: string;
 }
 
 export type SpinnerInputProps = {

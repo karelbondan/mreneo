@@ -35,7 +35,11 @@ export default function UbahPesanan() {
       <SimpanPerubahanPopup ref={confirmationDialog} />
       <BatalUbahPopup ref={cancellationDialog} />
       <HapusPesananPopup ref={deletionDialog} />
-      <TambahMakananPopup setPesanan={setPesanan} ref={tambahMakananDialog} />
+      {/* TODO: implementasi onPositiveClick di sini */}
+      <TambahMakananPopup
+        setPesanan={setPesanan}
+        onNegativeClick={() => tambahMakananDialog.current?.hide()}
+        ref={tambahMakananDialog} />
       {/* main page */}
       <div className='h-full p-4 space-y-2 overflow-auto'>
         <h2 className='font-bold text-lg'>Pesanan no. 2</h2>
@@ -44,7 +48,11 @@ export default function UbahPesanan() {
           <div className='w-2/5'>
             <CustomDropdown title='Pilih metode pembayaran'
               pilihan={["Cash", "QRIS"]}
-              onChange={(val) => setdataPesanan({ ...dataPesanan, metode_pembayaran: val })}
+              pilihanString={["Cash", "QRIS"]}
+              // TODO: ganti sama data yang didapet dari database
+              defaultValue='Cash'
+              // TODO: hapus console log di sini
+              onChange={(val) => { setdataPesanan({ ...dataPesanan, metode_pembayaran: val }); console.log(val); }}
             />
           </div>
         </div>
@@ -52,7 +60,10 @@ export default function UbahPesanan() {
         {dataPesanan.pesanan.map((makanan, nomor) => {
           return <UbahPesananCard
             data={makanan}
-            makanan_no={nomor + 1} />
+            makanan_no={nomor + 1}
+            // TODO: implement onHapusClick di sini 
+            onHapusClick={() => { }}
+          />
         })}
         <hr className='border-transparent h-2' />
         <button

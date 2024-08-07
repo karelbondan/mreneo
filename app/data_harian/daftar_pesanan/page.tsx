@@ -2,6 +2,7 @@ import React from 'react'
 import PesananDummy from "./dummy_data/daftar_pesanan_customer.js"
 import { DaftarPesanan } from '@/types/common';
 import PesananCard from '@/components/cards/pesanan';
+import Link from 'next/link.js';
 
 export default function Pesanan() {
     const orders: DaftarPesanan[] | undefined = PesananDummy;
@@ -19,9 +20,11 @@ export default function Pesanan() {
                 )}
             </div>
             <div className='flex items-center justify-center p-5'>
-                <button className='bg-green-400 p-3 w-full font-bold rounded-lg active:scale-90 transition-all'>
-                    Pesanan baru
-                </button>
+                <Link href={"/data_harian/daftar_pesanan/pesanan_baru"} className='w-full'>
+                    <button className='bg-green-400 p-3 w-full font-bold rounded-lg active:scale-90 transition-all'>
+                        Pesanan baru
+                    </button>
+                </Link>
             </div>
         </div>
     )

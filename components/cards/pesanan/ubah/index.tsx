@@ -13,6 +13,7 @@ export default function UbahPesananCard(props: UbahPesananCardProps) {
             <CustomPopup
                 title='Hapus makanan?'
                 positiveButtonTitle='Hapus'
+                onPositiveClick={props.onHapusClick}
                 negativeButtonTitle='Tunggu dulu'
                 ref={deleteConfirmation}
             >

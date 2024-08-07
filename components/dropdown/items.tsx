@@ -3,20 +3,21 @@ import React, { Dispatch, SetStateAction } from 'react'
 
 function onClick(
     setVisible: Dispatch<SetStateAction<boolean>>,
-    onSelect: Dispatch<SetStateAction<string>>,
-    selectedValue: string
+    onSelect: (selectedValue: any, selectedTitle: string) => void,
+    selectedValue: any,
+    selectedTitle: string
 ): void {
     setVisible(false);
-    onSelect(selectedValue);
+    onSelect(selectedValue, selectedTitle);
 }
 
 export default function DropdownItems(props: DropDownItem) {
-    const { setVisible, onSelect, value } = props;
+    const { setVisible, onSelect, value, title } = props;
     return (
         <div className='border h-10 flex items-center p-2 active:bg-gray-200 transition-all select-none'
-            onClick={() => { onClick(setVisible, onSelect, value); }}
+            onClick={() => { onClick(setVisible, onSelect, value, title); }}
         >
-            {value}
+            {title}
         </div>
     )
 }
