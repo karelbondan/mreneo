@@ -1,13 +1,14 @@
 'use client'
 import React, { useRef, useState } from 'react'
 import EditPesananData from '../dummy_data/edit_pesanan'
-import { DaftarPesanan, DataPesanan, PopupHandle, setPesanan } from '@/types/common';
+import { DaftarPesanan, DataPesanan } from '@/types/common';
 import UbahPesananCard from '@/components/cards/pesanan/ubah';
 import CustomDropdown from '@/components/dropdown';
 import TambahMakananPopup from '@/components/popup/tambah_makanan';
 import SimpanPerubahanPopup from '@/components/popup/simpan_perubahan';
 import BatalUbahPopup from '@/components/popup/batal_ubah';
 import HapusPesananPopup from '@/components/popup/hapus_pesanan';
+import { PopupHandle, setPesanan } from '@/types/popup';
 
 export default function UbahPesanan() {
   // TODO: ubah ini jadi get data dari database (pake usestate sama useeffect)
@@ -52,7 +53,7 @@ export default function UbahPesanan() {
               // TODO: ganti sama data yang didapet dari database
               defaultValue='Cash'
               // TODO: hapus console log di sini
-              onChange={(val) => { setdataPesanan({ ...dataPesanan, metode_pembayaran: val }); console.log(val); }}
+              onChange={(val: string) => setdataPesanan({ ...dataPesanan, metode_pembayaran: val })}
             />
           </div>
         </div>

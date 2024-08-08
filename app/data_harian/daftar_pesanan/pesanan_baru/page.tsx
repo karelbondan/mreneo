@@ -6,7 +6,8 @@ import BatalUbahPopup from '@/components/popup/batal_ubah';
 import MakananSudahAdaPopup from '@/components/popup/makanan_sudah_ada';
 import SimpanPerubahanPopup from '@/components/popup/simpan_perubahan';
 import TambahMakananPopup from '@/components/popup/tambah_makanan';
-import { DaftarPesanan, DataPesanan, PopupHandle } from '@/types/common';
+import { DaftarPesanan, DataPesanan } from '@/types/common';
+import { PopupHandle } from '@/types/popup';
 import { daftarPesananInit, dataPesananInit } from '@/utils/declarations';
 import React, { useRef, useState } from 'react'
 
@@ -16,15 +17,16 @@ export default function PesananBaru() {
   const tambahMakananDialog = useRef<PopupHandle>(null);
   const sudahAdaDialog = useRef<PopupHandle>(null);
 
+  const timeNow = new Date();
+
   const [makananSudahAda, setmakananSudahAda] = useState<DataPesanan>(dataPesananInit);
   const [dataPesanan, setdataPesanan] = useState<DaftarPesanan>({
     ...daftarPesananInit,
-    date: new Date().toISOString(),
+    date: timeNow.toISOString(),
   });
 
   function onPositiveClick(value: DataPesanan) {
     if (value.harga < 1) return;
-    tambahMakananDialog.current?.hide();
     const makananSudahAda = dataPesanan.pesanan.some(
       makanan => makanan.id_makanan === value.id_makanan
     );
@@ -36,6 +38,7 @@ export default function PesananBaru() {
         ...dataPesanan,
         pesanan: [...dataPesanan.pesanan, value]
       })
+      tambahMakananDialog.current?.hide();
     }
   }
 
@@ -51,16 +54,22 @@ export default function PesananBaru() {
       {/* popup declarations */}
       <SimpanPerubahanPopup ref={simpanDialog} />
       <BatalUbahPopup ref={batalDialog} />
-      <MakananSudahAdaPopup
-        namaMakanan={makananSudahAda.nama_makanan}
-        ref={sudahAdaDialog} />
       <TambahMakananPopup
         onPositiveClick={onPositiveClick}
         onNegativeClick={() => tambahMakananDialog.current?.hide()}
         ref={tambahMakananDialog} />
+      {/* from here i learnt that the rendering system of HTML is similar to Unity.
+      The HTML elements in the lower hierarchy will be rendered on top of the upper ones. */}
+      <MakananSudahAdaPopup
+        namaMakanan={makananSudahAda.nama_makanan}
+        ref={sudahAdaDialog} />
       {/* main page */}
       <div className='h-full p-4 space-y-2 overflow-auto'>
-        <h2 className='font-bold text-lg'>Pesanan baru</h2>
+        <div className='space-y-0'>
+          <h2 className='font-bold text-lg'>Pesanan baru</h2>
+          <h3 className='opacity-50'>{`${timeNow.toLocaleString("id-ID").replaceAll(".", ":")}`}</h3>
+        </div>
+        <hr className='border-black/20' />
         <div className='flex items-center justify-between'>
           <p>Metode pembayaran</p>
           <div className='w-2/5'>
@@ -69,7 +78,7 @@ export default function PesananBaru() {
               pilihan={["Cash", "QRIS"]}
               pilihanString={["Cash", "QRIS"]}
               defaultValue='Cash'
-              onChange={(val) => setdataPesanan({ ...dataPesanan, metode_pembayaran: val })}
+              onChange={(val: string) => setdataPesanan({ ...dataPesanan, metode_pembayaran: val })}
             />
           </div>
         </div>

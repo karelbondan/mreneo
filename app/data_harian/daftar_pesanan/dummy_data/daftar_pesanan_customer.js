@@ -4,7 +4,6 @@ export default [
         date: "2024-8-1T18:18:30.000Z",
         pesanan: [
             {
-                _id: "someidlolidk1",
                 id_makanan: "H9SJA08AJSKNAVZ7XC52N32",
                 identifier: "mangut",
                 nama_makanan: "Mangut",
@@ -12,7 +11,6 @@ export default [
                 jumlah: 1
             },
             {
-                _id: "someidlolidk2",
                 id_makanan: "H9SJA08AJSKNAVZ7XC52N34",
                 identifier: "mentega_chicken_stick",
                 nama_makanan: "Nasi Mentega Chicken Stick",
@@ -20,7 +18,6 @@ export default [
                 jumlah: 1
             },
             {
-                _id: "someidlolidk3",
                 id_makanan: "H9SJA08AJSKNAVZ7XC52N35",
                 identifier: "geprek_ijo",
                 nama_makanan: "Nasi Ayam Geprek Sambel Ijo",
@@ -28,7 +25,6 @@ export default [
                 jumlah: 1
             },
             {
-                _id: "someidlolidk4",
                 id_makanan: "H9SJA08AJSKNAVZ7XC52N96",
                 identifier: "es_teh_manis",
                 nama_makanan: "Es Teh Manis",
@@ -44,7 +40,6 @@ export default [
         date: "2024-8-1T18:18:30.000Z",
         pesanan: [
             {
-                _id: "someidlolidk9",
                 id_makanan: "H9SJA08AJSKNAVZ7XC52N32",
                 identifier: "mendoan",
                 nama_makanan: "Tempe Mendoan",
@@ -52,7 +47,6 @@ export default [
                 jumlah: 2
             },
             {
-                _id: "someidlolidk10",
                 id_makanan: "H9SJA08AJSKNAVZ7XC52N34",
                 identifier: "ayam_goreng_matah",
                 nama_makanan: "Nasi Ayam Goreng Sambel Matah",
@@ -60,7 +54,6 @@ export default [
                 jumlah: 1
             },
             {
-                _id: "someidlolidk11",
                 id_makanan: "H9SJA08AJSKNAVZ7XC52N96",
                 identifier: "es_teh_manis",
                 nama_makanan: "Es Teh Manis",
