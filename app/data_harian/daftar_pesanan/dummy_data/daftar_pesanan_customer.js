@@ -1,7 +1,7 @@
 export default [
     {
         _id: "273GH291NNNFR03WKFN921",
-        date: "2024-8-1T18:18:30.000Z",
+        date: "2024-08-01T13:05:29.274Z",
         pesanan: [
             {
                 id_makanan: "H9SJA08AJSKNAVZ7XC52N32",
@@ -37,7 +37,7 @@ export default [
     },
     {
         _id: "GH8Y3RHFEJDG824HTJKL",
-        date: "2024-8-1T18:18:30.000Z",
+        date: "2024-08-01T13:05:29.274Z",
         pesanan: [
             {
                 id_makanan: "H9SJA08AJSKNAVZ7XC52N32",

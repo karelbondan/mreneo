@@ -20,3 +20,13 @@ export type DaftarPesanan = {
     total_harga: number;
     metode_pembayaran: string;
 }
+
+export type IsiPemasukanData = {
+    nama_makanan: string;
+    harga: number;
+    jumlah: number;
+}
+
+export interface PemasukanData {
+    [key: string]: IsiPemasukanData;
+}
