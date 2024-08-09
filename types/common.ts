@@ -30,3 +30,10 @@ export type IsiPemasukanData = {
 export interface PemasukanData {
     [key: string]: IsiPemasukanData;
 }
+
+export type DataPengeluaran = {
+    nama_barang: string;
+    harga: number | '';
+    jumlah: number;
+    keterangan: string;
+}

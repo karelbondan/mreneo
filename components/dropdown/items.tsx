@@ -1,4 +1,4 @@
-import { DropDownItem } from '@/types/common'
+import { DropDownItem } from '@/types/dropdown';
 import React, { Dispatch, SetStateAction } from 'react'
 
 function onClick(

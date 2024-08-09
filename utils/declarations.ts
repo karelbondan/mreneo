@@ -1,4 +1,4 @@
-import { DaftarPesanan, DataPesanan, MakananData } from "@/types/common";
+import { DaftarPesanan, DataPengeluaran, DataPesanan, MakananData } from "@/types/common";
 
 export const dataMakananInit: MakananData = {
     _id: "",
@@ -20,4 +20,11 @@ export const daftarPesananInit: DaftarPesanan = {
     pesanan: [] as DataPesanan[],
     total_harga: 0,
     metode_pembayaran: "Cash",
+}
+
+export const dataBarangInit: DataPengeluaran = {
+    nama_barang: "",
+    harga: "",
+    jumlah: 1,
+    keterangan: ""
 }

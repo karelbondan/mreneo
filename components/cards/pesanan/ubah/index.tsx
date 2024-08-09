@@ -1,6 +1,7 @@
 import SpinnerInput from '@/components/input/spinner';
 import CustomPopup from '@/components/popup';
-import { PopupHandle, UbahPesananCardProps } from '@/types/common'
+import { UbahPesananCardProps } from '@/types/card';
+import { PopupHandle } from '@/types/popup';
 import { formatHarga } from '@/utils/commonfunc';
 import React, { useRef, useState } from 'react'
 

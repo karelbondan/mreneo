@@ -1,6 +1,6 @@
-import { DropDownHandle, DropDownProps } from '@/types/common';
 import React, { forwardRef, PropsWithChildren, useEffect, useImperativeHandle, useState } from 'react'
 import DropdownItems from './items';
+import { DropDownHandle, DropDownProps } from '@/types/dropdown';
 
 // with popup hehe
 // export default function CustomDropdown(props: DropDownProps) 
@@ -49,7 +49,7 @@ const CustomDropdown = forwardRef<DropDownHandle, DropDownProps>((props, ref) =>
                                     title={props.pilihanString[index]}
                                     value={opsi}
                                     setVisible={setvisible}
-                                    onSelect={(val, title) => { setselectedItemString(title); props.onChange?.(val); }}
+                                    onSelect={(val: any, title: string) => { setselectedItemString(title); props.onChange?.(val); }}
                                 />
                             })}
                         </div>

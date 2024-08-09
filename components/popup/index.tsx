@@ -1,4 +1,4 @@
-import { PopupHandle, PopUpProps } from '@/types/common'
+import { PopupHandle, PopUpProps } from '@/types/popup';
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
 
 // using forwardRef & imperativeHandler in child and useRef in parent

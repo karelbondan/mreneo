@@ -1,4 +1,3 @@
-import { DataPesanan, DropDownHandle, MakananData, PopupHandle, TambahMakananPopupProps } from '@/types/common'
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import CustomPopup from '.'
 import CustomDropdown from '../dropdown'
@@ -6,6 +5,9 @@ import SpinnerInput from '../input/spinner'
 import { formatHarga } from '@/utils/commonfunc'
 import pilihanMakanan from "./dummy_data/pilihan_makanan"
 import { dataMakananInit, dataPesananInit } from '@/utils/declarations'
+import { PopupHandle, TambahMakananPopupProps } from '@/types/popup'
+import { DataPesanan, MakananData } from '@/types/common'
+import { DropDownHandle } from '@/types/dropdown'
 
 const TambahMakananPopup = forwardRef<PopupHandle, TambahMakananPopupProps>((props, ref) => {
     const pilihan: MakananData[] = pilihanMakanan;

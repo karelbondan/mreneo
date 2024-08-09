@@ -1,6 +1,6 @@
-import { GenericPopupProps, PopupHandle } from '@/types/common'
 import React, { forwardRef } from 'react'
 import CustomPopup from '.'
+import { GenericPopupProps, PopupHandle } from '@/types/popup';
 
 const SimpanPerubahanPopup = forwardRef<PopupHandle, GenericPopupProps>((props, ref) => {
     return (

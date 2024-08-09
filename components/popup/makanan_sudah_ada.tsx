@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import CustomPopup from '.'
-import { MakananSudahAdaProps, PopupHandle } from '@/types/common'
+import { MakananSudahAdaProps, PopupHandle } from '@/types/popup';
 
 const MakananSudahAdaPopup = forwardRef<PopupHandle, MakananSudahAdaProps>((props, ref) => {
     return (

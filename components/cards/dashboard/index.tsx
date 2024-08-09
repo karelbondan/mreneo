@@ -1,6 +1,5 @@
 'use client'
-
-import { DashboardData } from "@/types/common";
+import { DashboardData } from "@/types/card";
 import Link from "next/link";
 import { useState } from "react";
 

@@ -1,4 +1,4 @@
-import { PesananCardProps } from '@/types/common'
+import { PesananCardProps } from '@/types/card';
 import { formatHarga } from '@/utils/commonfunc';
 import Link from 'next/link';
 import React from 'react'

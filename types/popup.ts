@@ -1,5 +1,5 @@
 import { Dispatch, PropsWithChildren, SetStateAction } from "react";
-import { DataPesanan } from "./common";
+import { DataPengeluaran, DataPesanan } from "./common";
 
 export interface PopUpProps extends PropsWithChildren {
     title: string;
@@ -29,7 +29,11 @@ export type TambahMakananPopupProps = {
     setPesanan?: ({ index, data, action }: setPesanan) => void;
     onPositiveClick?: (value: any) => void;
     onNegativeClick?: () => void;
-    // onTambahKlik?: ({ value }: { value: DataPesanan }) => void
+}
+
+export type TambahBarangPopupProps = {
+    onPositiveClick?: (value: DataPengeluaran) => void;
+    onNegativeClick?: () => void;
 }
 
 export type GenericPopupProps = {
@@ -44,9 +48,9 @@ export type MakananSudahAdaProps = {
 }
 
 export type SpinnerInputProps = {
-    onChange?: () => void;
+    onChange?: (value: number) => void;
     jumlah: number;
-    setJumlah: Dispatch<SetStateAction<number>>;
+    setJumlah?: Dispatch<SetStateAction<number>>;
     className?: string;
     spinnerClassName?: string;
 }
