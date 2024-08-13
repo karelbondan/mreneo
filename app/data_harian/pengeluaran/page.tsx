@@ -7,6 +7,7 @@ import React, { useRef, useState } from 'react'
 export default function PengeluaranPage() {
     const [dataPengeluaran, setdataPengeluaran] = useState<DataPengeluaran[]>([]);
     const tambahBarangPopup = useRef<PopupHandle>(null);
+    const date = new Date();
 
     // null check has been done in the component, 
     // no need to do it again here
@@ -25,6 +26,7 @@ export default function PengeluaranPage() {
                 ref={tambahBarangPopup}
                 onPositiveClick={onPositiveClick}
                 onNegativeClick={() => tambahBarangPopup.current?.hide()} />
+            {date.toString()}
             <input type='text' className='border w-full' placeholder='search' />
             <div>
                 {dataPengeluaran.length > 0 ?
