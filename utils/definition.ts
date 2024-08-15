@@ -1,4 +1,8 @@
-export const months = {
+type Dates = {
+    [key: string]: string
+}
+
+export const months: Dates = {
     Jan: "Januari",
     Feb: "Februari",
     Mar: "Maret",
@@ -13,7 +17,7 @@ export const months = {
     Dec: "Desember"  
 }
 
-export const days = {
+export const days: Dates = {
     Mon: "Senin",
     Tue: "Selasa",
     Wed: "Rabu",

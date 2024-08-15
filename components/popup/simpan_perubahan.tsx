@@ -11,7 +11,7 @@ const SimpanPerubahanPopup = forwardRef<PopupHandle, GenericPopupProps>((props, 
             negativeButtonTitle='Tunggu dulu'
             ref={ref}
         >
-            <p>Simpan perubahan data pada pesanan ini ke database?</p>
+            <p>Simpan perubahan data ke database?</p>
         </CustomPopup>
     )
 })

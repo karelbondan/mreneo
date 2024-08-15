@@ -2,7 +2,7 @@ import { DaftarPesanan, PemasukanData } from '@/types/common';
 import React from 'react'
 import daftar_pesanan_customer from '../daftar_pesanan/dummy_data/daftar_pesanan_customer';
 import Link from 'next/link';
-import { formatHarga } from '@/utils/commonfunc';
+import { formatDate, formatHarga } from '@/utils/commonfunc';
 
 export default function PemasukanPage() {
   const pemasukan: DaftarPesanan[] = daftar_pesanan_customer;
@@ -28,8 +28,8 @@ export default function PemasukanPage() {
   return (
     <div>
       <p className='m-4 p-3 bg-purple-200 rounded-lg'>
-        Semua data (termasuk harga) tertera berdasarkan input tanggal <strong>{
-          new Date(pemasukan[0].date).toLocaleString("id-ID").replaceAll(".", ":")
+        Semua data (termasuk harga) tertera berdasarkan input hari <strong>{
+          formatDate(new Date(pemasukan[0].date), true)
         }</strong>
       </p>
       <div className='mx-4 border-black/20 overflow-auto'>
@@ -69,7 +69,7 @@ export default function PemasukanPage() {
             query: {
               redirect: "/data_harian/daftar_pesanan/pemasukan"
             }
-          }}><button className='underline'>daftar pesanan.</button>
+          }}><button className='underline'><strong>daftar pesanan</strong>.</button>
           </Link>
         </p>
       </div>
