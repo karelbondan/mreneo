@@ -1,6 +1,6 @@
 import React, { forwardRef, PropsWithChildren, useEffect, useImperativeHandle, useState } from 'react'
 import DropdownItems from './items';
-import { DropDownHandle, DropDownProps } from '@/types/dropdown';
+import { DropDownHandle, DropDownProps } from '@/types/input';
 
 // with popup hehe
 // export default function CustomDropdown(props: DropDownProps) 

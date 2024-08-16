@@ -1,4 +1,4 @@
-import { SpinnerInputProps } from '@/types/popup';
+import { SpinnerInputProps } from '@/types/input';
 import React, { useState } from 'react'
 import { twMerge } from 'tailwind-merge';
 

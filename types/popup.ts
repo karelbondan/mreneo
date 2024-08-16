@@ -46,11 +46,3 @@ export type MakananSudahAdaProps = {
     onNegativeClick?: () => void;
     namaMakanan: string;
 }
-
-export type SpinnerInputProps = {
-    onChange?: (value: number) => void;
-    jumlah: number;
-    setJumlah?: Dispatch<SetStateAction<number>>;
-    className?: string;
-    spinnerClassName?: string;
-}

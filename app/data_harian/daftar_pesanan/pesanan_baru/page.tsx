@@ -1,5 +1,6 @@
 'use client'
 import UbahPesananCard from '@/components/cards/pesanan/ubah';
+import TimeCard from '@/components/cards/time';
 import CustomDropdown from '@/components/dropdown';
 import CustomPopup from '@/components/popup';
 import BatalUbahPopup from '@/components/popup/batal_ubah';
@@ -65,11 +66,11 @@ export default function PesananBaru() {
         ref={sudahAdaDialog} />
       {/* main page */}
       <div className='h-full p-4 space-y-2 overflow-auto'>
-        <div className='space-y-0'>
-          <h2 className='font-bold text-lg'>Pesanan baru</h2>
-          <h3 className='opacity-50'>{`${timeNow.toLocaleString("id-ID").replaceAll(".", ":")}`}</h3>
+        <div className='mb-4'>
+          <TimeCard />
         </div>
         <hr className='border-black/20' />
+        <p className='font-bold text-lg'>Pesanan baru</p>
         <div className='flex items-center justify-between'>
           <p>Metode pembayaran</p>
           <div className='w-2/5'>

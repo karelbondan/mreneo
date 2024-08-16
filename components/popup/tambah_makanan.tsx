@@ -7,7 +7,7 @@ import pilihanMakanan from "./dummy_data/pilihan_makanan"
 import { dataMakananInit, dataPesananInit } from '@/utils/declarations'
 import { PopupHandle, TambahMakananPopupProps } from '@/types/popup'
 import { DataPesanan, MakananData } from '@/types/common'
-import { DropDownHandle } from '@/types/dropdown'
+import { DropDownHandle } from '@/types/input'
 
 const TambahMakananPopup = forwardRef<PopupHandle, TambahMakananPopupProps>((props, ref) => {
     const pilihan: MakananData[] = pilihanMakanan;

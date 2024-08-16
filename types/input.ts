@@ -23,3 +23,11 @@ export type DropDownItem = {
     title: string;
     value: any
 }
+
+export type SpinnerInputProps = {
+    onChange?: (value: number) => void;
+    jumlah: number;
+    setJumlah?: Dispatch<SetStateAction<number>>;
+    className?: string;
+    spinnerClassName?: string;
+}

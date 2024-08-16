@@ -74,7 +74,7 @@ export default function PengeluaranPage() {
                             {dataPengeluaran.map((barang, index) =>
                                 <tr className={`${index % 2 === 0 ? "bg-blue-100" : "bg-blue-200"}`}>
                                     <td className={rowStyle}>
-                                        <button className='p-2 bg-blue-300 rounded-lg'
+                                        <button className='p-2 bg-blue-300 rounded-lg active:scale-75 transition-all'
                                             onClick={() => deleteConfirmation(index, barang.nama_barang)}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
