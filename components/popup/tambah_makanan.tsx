@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import CustomPopup from '.'
-import CustomDropdown from '../dropdown'
+import CustomDropdown from '../input/dropdown'
 import SpinnerInput from '../input/spinner'
 import { formatHarga } from '@/utils/commonfunc'
 import pilihanMakanan from "./dummy_data/pilihan_makanan"
