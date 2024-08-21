@@ -1,25 +1,15 @@
-import React, { forwardRef, PropsWithChildren, useEffect, useImperativeHandle, useState } from 'react'
+import React, { useState } from 'react'
 import DropdownItems from './items';
-import { DropDownHandle, DropDownProps } from '@/types/input';
+import { DropDownProps } from '@/types/input';
 
-// with popup hehe
-// export default function CustomDropdown(props: DropDownProps) 
-const CustomDropdown = forwardRef<DropDownHandle, DropDownProps>((props, ref) => {
+const CustomDropdown = (props: DropDownProps) => {
     const [visible, setvisible] = useState(false);
-    const [selectedItemString, setselectedItemString] = useState<string>(props.defaultValue);
-
-    useImperativeHandle(ref, () => ({
-        reset: () => reset(),
-    }));
-
-    const reset = () => setselectedItemString(props.defaultValue);
-
     return (
         <div className='w-full'>
-            <div className='flex justify-between w-full border border-black/30 rounded-lg p-2 cursor-pointer active:scale-90 transition-all'
+            <div className='flex items-center justify-between gap-2 w-full border border-black/30 rounded-lg p-2 cursor-pointer active:scale-90 transition-all'
                 onClick={() => setvisible(true)}>
-                <p className='select-none'>{selectedItemString}</p>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <p className='select-none'>{props.value}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
             </div>
@@ -49,7 +39,7 @@ const CustomDropdown = forwardRef<DropDownHandle, DropDownProps>((props, ref) =>
                                     title={props.pilihanString[index]}
                                     value={opsi}
                                     setVisible={setvisible}
-                                    onSelect={(val: any, title: string) => { setselectedItemString(title); props.onChange?.(val); }}
+                                    onSelect={(val: any, title: string) => { props.onChange?.(val); }}
                                 />
                             })}
                         </div>
@@ -58,6 +48,6 @@ const CustomDropdown = forwardRef<DropDownHandle, DropDownProps>((props, ref) =>
             </div>
         </div>
     )
-})
+}
 
 export default CustomDropdown;

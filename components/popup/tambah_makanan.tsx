@@ -7,14 +7,12 @@ import pilihanMakanan from "./dummy_data/pilihan_makanan"
 import { dataMakananInit, dataPesananInit } from '@/utils/declarations'
 import { PopupHandle, TambahMakananPopupProps } from '@/types/popup'
 import { DataPesanan, MakananData } from '@/types/common'
-import { DropDownHandle } from '@/types/input'
 
 const TambahMakananPopup = forwardRef<PopupHandle, TambahMakananPopupProps>((props, ref) => {
     const pilihan: MakananData[] = pilihanMakanan;
     const [jumlah, setjumlah] = useState(1);
     const [makananData, setmakananData] = useState<MakananData>(dataMakananInit);
     const [dataPesanan, setdataPesanan] = useState<DataPesanan>(dataPesananInit);
-    const dropDownRef = useRef<DropDownHandle>(null);
 
     useEffect(() => {
         const { _id } = makananData;
@@ -25,7 +23,6 @@ const TambahMakananPopup = forwardRef<PopupHandle, TambahMakananPopupProps>((pro
         setmakananData(dataMakananInit);
         setdataPesanan(dataPesananInit);
         setjumlah(1);
-        dropDownRef.current?.reset();
     }
 
     return (
@@ -44,9 +41,9 @@ const TambahMakananPopup = forwardRef<PopupHandle, TambahMakananPopupProps>((pro
                     pilihanString={pilihan.map(makanan => makanan.nama_makanan)}
                     pilihan={pilihan}
                     title='Pilih makanan'
-                    defaultValue={"Pilih makanan"}
-                    onChange={(value: MakananData) => { console.log(value); setmakananData(value); }}
-                    ref={dropDownRef} />
+                    value={makananData.nama_makanan}
+                    onChange={(value: MakananData) => { setmakananData(value); }}
+                />
             </div>
             <div className='grid grid-cols-2 items-center py-1'>
                 <p className='min-w-fit pr-1'>Harga</p>

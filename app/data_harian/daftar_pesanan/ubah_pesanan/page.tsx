@@ -51,8 +51,7 @@ export default function UbahPesanan() {
               pilihan={["Cash", "QRIS"]}
               pilihanString={["Cash", "QRIS"]}
               // TODO: ganti sama data yang didapet dari database
-              defaultValue='Cash'
-              // TODO: hapus console log di sini
+              value={dataPesanan.metode_pembayaran}
               onChange={(val: string) => setdataPesanan({ ...dataPesanan, metode_pembayaran: val })}
             />
           </div>

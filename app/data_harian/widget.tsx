@@ -1,17 +1,27 @@
 import DashboardCard from '@/components/cards/dashboard'
 import DatePicker from '@/components/input/date_picker';
 import { DataHarianInteractiveProps } from '@/types/card'
-import { formatDate } from '@/utils/commonfunc';
-import React from 'react'
+import { PopupHandle } from '@/types/popup';
+import { useRef, useState } from 'react';
 
 export default function DataHarianInteractiveSection(props: DataHarianInteractiveProps) {
-    const date = new Date();
+    const [selectedDate, setselectedDate] = useState<Date>(new Date());
+    const datePicker = useRef<PopupHandle>(null);
+
+    function setDate(newDate: Date) {
+        setselectedDate(newDate);
+        datePicker.current?.hide();
+        console.log(newDate.toDateString());
+    }
+
     return (
         <div className={props.className}>
-            <div className='w-full bg-purple-200 text-center rounded-lg p-2'>
+            <div className='w-full bg-purple-200 text-center rounded-lg p-3 flex flex-col items-center'>
                 <p>Menampilkan data untuk hari</p>
-                <p className='font-bold'>{formatDate(date)}</p>
-                <DatePicker />
+                <div className='w-full my-1'>
+                    <DatePicker ref={datePicker} onPositiveClick={setDate} />
+                </div>
+                <p className='text-sm text-black/50'>*Tekan ^ untuk memilih tanggal lain</p>
             </div>
             <DashboardCard with_button={false} />
             <div>

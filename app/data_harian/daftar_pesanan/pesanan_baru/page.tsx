@@ -78,7 +78,7 @@ export default function PesananBaru() {
               title='Pilih metode pembayaran'
               pilihan={["Cash", "QRIS"]}
               pilihanString={["Cash", "QRIS"]}
-              defaultValue='Cash'
+              value={dataPesanan.metode_pembayaran}
               onChange={(val: string) => setdataPesanan({ ...dataPesanan, metode_pembayaran: val })}
             />
           </div>

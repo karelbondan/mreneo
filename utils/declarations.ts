@@ -3,7 +3,7 @@ import { DaftarPesanan, DataPengeluaran, DataPesanan, MakananData } from "@/type
 export const dataMakananInit: MakananData = {
     _id: "",
     identifier: "",
-    nama_makanan: "",
+    nama_makanan: "Pilih makanan",
     harga: 0,
 }
 

@@ -11,7 +11,7 @@ export type DropDownProps = {
     // should be the same size as 'pilihan' with the same
     // item order
     pilihanString: string[];
-    defaultValue: string;
+    value: string;
     onChange?: (value: any) => void
 }
 
@@ -30,4 +30,13 @@ export type SpinnerInputProps = {
     setJumlah?: Dispatch<SetStateAction<number>>;
     className?: string;
     spinnerClassName?: string;
+    min?: number;
+    max?: number;
+    showTimes?: boolean
+}
+
+export type DatePickerProps = {
+    onPositiveClick?: (tanggal: Date) => void;
+    onNegativeClick?: () => void;
+    selectedDate?: Date;
 }

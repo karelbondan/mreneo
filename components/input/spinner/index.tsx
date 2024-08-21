@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 export default function SpinnerInput(props: SpinnerInputProps) {
     const [spinnerVisible, setspinnerVisible] = useState(false);
-    const { jumlah, setJumlah, onChange, className, spinnerClassName } = props;
+    const { jumlah, setJumlah, onChange, className, spinnerClassName, showTimes = true } = props;
 
     function onInputChange(e: React.ChangeEvent<HTMLInputElement>) {
         const value = parseInt(e.target.value);
@@ -34,10 +34,11 @@ export default function SpinnerInput(props: SpinnerInputProps) {
                 {/* tambah jumlah makanan */}
                 <button onClick={() => changeValue("increment")} className='size-10 border border-l-0 bg-white active:bg-gray-200 transition-all'>+</button>
             </div>
-            <p className='text-xl'>×</p>
+            {showTimes && <p className='text-xl'>×</p>}
             <input
                 type='number'
-                min={1}
+                min={props.min ?? 1}
+                max={props?.max}
                 value={jumlah}
                 onChange={onInputChange}
                 onClick={() => setspinnerVisible(true)}
