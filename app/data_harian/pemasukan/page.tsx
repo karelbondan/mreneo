@@ -2,7 +2,9 @@ import { DaftarPesanan, PemasukanData } from '@/types/common';
 import React from 'react'
 import daftar_pesanan_customer from '../daftar_pesanan/dummy_data/daftar_pesanan_customer';
 import Link from 'next/link';
-import { formatDate, formatHarga } from '@/utils/commonfunc';
+import { formatHarga } from '@/utils/commonfunc';
+import DateCard from '@/components/cards/date';
+import { headers } from 'next/headers';
 
 export default function PemasukanPage() {
   const pemasukan: DaftarPesanan[] = daftar_pesanan_customer;
@@ -23,15 +25,19 @@ export default function PemasukanPage() {
     })
   })
 
+  const headersList = headers();
+  const params = headersList.get("x-current-params");
+  const date = new Date(params!.split("=")[1]);
+
   const headerStyle = 'border-black/20 border-l-0 py-3 font-semibold flex items-center justify-center text-center bg-blue-200';
 
   return (
     <div>
-      <p className='m-4 p-3 bg-purple-200 rounded-lg'>
-        Semua data (termasuk harga) tertera berdasarkan input hari <strong>{
-          formatDate(new Date(pemasukan[0].date), true)
-        }</strong>
-      </p>
+      <div className='p-4'>
+        <DateCard date={date}>
+          Semua data (termasuk harga) tertera berdasarkan input hari
+        </DateCard>
+      </div>
       <div className='mx-4 border-black/20 overflow-auto'>
         <div className='grid grid-cols-[40%_20%_30%_30%] phone:grid-cols-[40%_20%_20%_20%] sticky top-0 bg-blue-200 rounded-t-lg'>
           <p className='border-black/20 p-1 font-semibold flex items-center justify-center text-center'>Makanan</p>

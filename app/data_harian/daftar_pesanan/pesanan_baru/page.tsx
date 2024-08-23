@@ -1,8 +1,7 @@
 'use client'
+import DateCard from '@/components/cards/date';
 import UbahPesananCard from '@/components/cards/pesanan/ubah';
-import TimeCard from '@/components/cards/time';
 import CustomDropdown from '@/components/input/dropdown';
-import CustomPopup from '@/components/popup';
 import BatalUbahPopup from '@/components/popup/batal_ubah';
 import MakananSudahAdaPopup from '@/components/popup/makanan_sudah_ada';
 import SimpanPerubahanPopup from '@/components/popup/simpan_perubahan';
@@ -10,6 +9,7 @@ import TambahMakananPopup from '@/components/popup/tambah_makanan';
 import { DaftarPesanan, DataPesanan } from '@/types/common';
 import { PopupHandle } from '@/types/popup';
 import { daftarPesananInit, dataPesananInit } from '@/utils/declarations';
+import { useSearchParams } from 'next/navigation';
 import React, { useRef, useState } from 'react'
 
 export default function PesananBaru() {
@@ -19,6 +19,7 @@ export default function PesananBaru() {
   const sudahAdaDialog = useRef<PopupHandle>(null);
 
   const timeNow = new Date();
+  const params = useSearchParams();
 
   const [makananSudahAda, setmakananSudahAda] = useState<DataPesanan>(dataPesananInit);
   const [dataPesanan, setdataPesanan] = useState<DaftarPesanan>({
@@ -67,7 +68,9 @@ export default function PesananBaru() {
       {/* main page */}
       <div className='h-full p-4 space-y-2 overflow-auto'>
         <div className='mb-4'>
-          <TimeCard />
+          <DateCard date={new Date(params.get("date")!)}>
+            Memasukkan dan menampilkan data untuk hari
+          </DateCard>
         </div>
         <hr className='border-black/20' />
         <p className='font-bold text-lg'>Pesanan baru</p>

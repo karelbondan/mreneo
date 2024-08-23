@@ -1,3 +1,4 @@
+import { PropsWithChildren } from "react";
 import { DaftarPesanan, DataPesanan } from "./common";
 
 export type DashboardData = {
@@ -21,4 +22,8 @@ export type UbahPesananCardProps = {
 export type DataHarianInteractiveProps = {
     className: string;
     onDateChanged?: (value: Date) => void;
+}
+
+export interface DateCardProps extends PropsWithChildren {
+    date: Date
 }

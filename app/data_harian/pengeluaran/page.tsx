@@ -1,4 +1,5 @@
 'use client'
+import DateCard from '@/components/cards/date';
 import TimeCard from '@/components/cards/time';
 import CustomPopup from '@/components/popup';
 import SimpanPerubahanPopup from '@/components/popup/simpan_perubahan';
@@ -6,6 +7,7 @@ import TambahBarangPopup from '@/components/popup/tambah_barang';
 import { DataPengeluaran } from '@/types/common';
 import { PopupHandle } from '@/types/popup';
 import { formatHarga } from '@/utils/commonfunc';
+import { useSearchParams } from 'next/navigation';
 import React, { useRef, useState } from 'react'
 
 export default function PengeluaranPage() {
@@ -34,6 +36,7 @@ export default function PengeluaranPage() {
 
     const headerStyle = "px-3 py-4 whitespace-nowrap";
     const rowStyle = "px-3 py-3 text-center";
+    const params = useSearchParams();
 
     return (
         <div className='p-4'>
@@ -54,7 +57,9 @@ export default function PengeluaranPage() {
                 ref={simpanPopup}
             />
             <div className='space-y-4'>
-                <TimeCard />
+                <DateCard date={new Date(params.get("date")!)}>
+                    Memasukkan dan menampilkan data untuk hari
+                </DateCard>
                 {dataPengeluaran.length > 0 && (
                     <p className='p-3 bg-purple-200 rounded-lg'>
                         <strong>Tip</strong>: Tabel bisa digeser ke kanan/kiri untuk melihat detail lebih banyak.
