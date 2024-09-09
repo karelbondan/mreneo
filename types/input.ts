@@ -40,3 +40,8 @@ export type DatePickerProps = {
     onNegativeClick?: () => void;
     selectedDate?: Date;
 }
+
+export type LoginDataInput = {
+    username: string;
+    password: string
+}

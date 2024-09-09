@@ -1,4 +1,5 @@
 import { DaftarPesanan, DataPengeluaran, DataPesanan, MakananData } from "@/types/common";
+import { LoginDataInput } from "@/types/input";
 
 export const dataMakananInit: MakananData = {
     _id: "",
@@ -27,4 +28,9 @@ export const dataBarangInit: DataPengeluaran = {
     harga: "",
     jumlah: 1,
     keterangan: ""
+}
+
+export const dataLoginInit: LoginDataInput = {
+    username: "",
+    password: ""
 }

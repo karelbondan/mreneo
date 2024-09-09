@@ -13,9 +13,15 @@ export function formatDate(date: Date, and_time: boolean = false): string {
     } else {
         return `${days[tanggal[0]]}, ${tanggal[2]} ${months[tanggal[1]]} ${tanggal[3]}`;
     }
-
 }
 
 export function getCurrentDateISO(): string {
     return new Date().toISOString();
+}
+
+export function getCommonHeaders(): { [key: string]: string } {
+    return {
+        "content-type": "application/json",
+        "access-control-allow-origin": process.env.NEXT_PUBLIC_ORIGIN_DOMAIN!,
+    }
 }

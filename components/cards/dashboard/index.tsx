@@ -1,8 +1,25 @@
+"use client"
+import { useEffect } from "react";
 import { DashboardData } from "@/types/card";
+import { checkAuth } from "@/utils/api/auth";
+import { useCookies } from "next-client-cookies";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function DashboardCard(props: DashboardData) {
     const { pemasukan = 0, pengeluaran = 0, terjual = 0, with_button = true } = props;
+    const cookies = useCookies();
+    const router = useRouter()
+
+    useEffect(() => {
+        async function init() {
+            const resHasErr = await checkAuth(cookies);
+            if (resHasErr) {
+                router.push(`/login?err=${resHasErr}`)
+            }
+        }
+        init();
+    }, [])
 
     return (
         <div className="rounded-lg bg-green-200 p-3">

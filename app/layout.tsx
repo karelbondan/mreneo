@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import NavigationBar from "@/components/footer";
 import NextTopLoader from "nextjs-toploader";
+import { CookiesProvider } from "next-client-cookies/server";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -72,9 +73,11 @@ export default function RootLayout({
             color="#2299DD"
           />
           <Header />
-          <div className="min-h-0 h-full overflow-auto">
-            {children}
-          </div>
+          <CookiesProvider>
+            <div className="min-h-0 h-full overflow-auto">
+              {children}
+            </div>
+          </CookiesProvider>
           <NavigationBar />
         </div>
       </body>
