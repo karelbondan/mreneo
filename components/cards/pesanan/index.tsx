@@ -29,9 +29,9 @@ export default function PesananCard(props: PesananCardProps) {
                 <p>{data.metode_pembayaran}</p>
             </div>
             <hr className='border-black/20' />
-            {data.pesanan.map(makanan => {
+            {data.pesanan.map((makanan, index) => {
                 return (
-                    <div className='flex justify-between space-x-2'>
+                    <div key={makanan.identifier + index} className='flex justify-between space-x-2'>
                         <div className='flex space-x-1 px-1'>
                             <p className='min-w-fit'>- {makanan.jumlah} ×</p>
                             <p>{makanan.nama_makanan}</p>

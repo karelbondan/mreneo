@@ -10,5 +10,9 @@ export const strings = {
     },
     error: {
         INT_500_ERR: "Terjadi galat internal, silakan kontak pengurus"
+    },
+    gui: {
+        PESANAN_EMPTY: "Belum ada pesanan yang ditambahkan. Tambah pesanan baru menggunakan tombol \"Pesanan baru\" di bawah.",
+        PESANAN_LOADING: "Sedang mengambil data pesanan, mohon tunggu..."
     }
 }

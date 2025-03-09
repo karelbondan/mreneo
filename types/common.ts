@@ -1,3 +1,9 @@
+import { PropsWithChildren } from "react";
+
+export interface ProtectedProps extends PropsWithChildren {
+    disable_auth?: boolean;
+}
+
 export type MakananData = {
     _id: string;
     identifier: string;

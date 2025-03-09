@@ -25,5 +25,6 @@ export type DataHarianInteractiveProps = {
 }
 
 export interface DateCardProps extends PropsWithChildren {
-    date: Date
+    date: Date;
+    disable_auth?: boolean;
 }
