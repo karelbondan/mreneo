@@ -36,6 +36,7 @@ const CustomDropdown = (props: DropDownProps) => {
                         <div className='h-full bg-white'>
                             {props.pilihan.map((opsi, index) => {
                                 return <DropdownItems
+                                    key={props.title + index}
                                     title={props.pilihanString[index]}
                                     value={opsi}
                                     setVisible={setvisible}

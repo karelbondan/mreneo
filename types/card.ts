@@ -16,7 +16,8 @@ export type PesananCardProps = {
 export type UbahPesananCardProps = {
     data: DataPesanan;
     makanan_no: number;
-    onHapusClick: () => void;
+    onDeleteClick: () => void;
+    onAmountChange?: (amount: number) => void;
 }
 
 export type DataHarianInteractiveProps = {

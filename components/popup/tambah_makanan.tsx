@@ -16,7 +16,7 @@ const TambahMakananPopup = forwardRef<PopupHandle, TambahMakananPopupProps>((pro
 
     useEffect(() => {
         const { _id } = makananData;
-        setdataPesanan({ id_makanan: _id, jumlah: jumlah, ...makananData });
+        setdataPesanan({ id: _id, jumlah: jumlah, ...makananData });
     }, [jumlah, makananData])
 
     function reset() {

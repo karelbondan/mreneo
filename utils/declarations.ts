@@ -9,15 +9,18 @@ export const dataMakananInit: MakananData = {
 }
 
 export const dataPesananInit: DataPesanan = {
-    id_makanan: "",
-    identifier: "",
+    id: "",
     nama_makanan: "",
     harga: 0,
     jumlah: 0,
 }
 
 export const daftarPesananInit: DaftarPesanan = {
-    date: "",
+    id: "",
+    added_by: "",
+    added_date: "",
+    modified_by: "",
+    modified_date: "",
     pesanan: [] as DataPesanan[],
     total_harga: 0,
     metode_pembayaran: "Cash",

@@ -12,16 +12,18 @@ export type MakananData = {
 }
 
 export type DataPesanan = {
-    id_makanan: string;
-    identifier: string;
+    id: string;
     nama_makanan: string;
     harga: number;
     jumlah: number;
 }
 
 export type DaftarPesanan = {
-    _id?: string;
-    date: string;
+    id: string;
+    added_date: string;
+    added_by: string;
+    modified_by: string;
+    modified_date: string;
     pesanan: DataPesanan[];
     total_harga: number;
     metode_pembayaran: string;

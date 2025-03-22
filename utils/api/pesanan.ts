@@ -16,9 +16,9 @@ export async function getPesanan(cookies: Cookies): Promise<DaftarPesanan[]> {
         headers: getHeadersWithCSRF(cookies)
     })
     checkError(data);
-    const parsed: { detail: DaftarPesanan[] } = await data.json();
+    const parsed: DaftarPesanan[] = await data.json();
     console.log(parsed);
-    return parsed.detail;
+    return parsed;
 }
 
 // export async function getPesananByDate(cookies: Cookies): Promise<DaftarPesanan[]> {

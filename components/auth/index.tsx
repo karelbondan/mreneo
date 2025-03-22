@@ -9,11 +9,11 @@ export default function Protected(props: ProtectedProps) {
     const cookies = useCookies();
     const router = useRouter();
 
-    useEffect(() => {
-        if (!props.disable_auth) {
-            checkAuth(cookies).then(error => error && router.push(`/login?err=${error}`));
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (!props.disable_auth) {
+    //         checkAuth(cookies).then(error => error && router.push(`/login?err=${error}`));
+    //     }
+    // }, []);
 
     return (
         <div>

@@ -8,7 +8,6 @@ import DateCard from '@/components/cards/date';
 import DaftarPesananSection from '@/components/sections/daftar_pesanan';
 
 export default function Pesanan() {
-    const orders: DaftarPesanan[] | undefined = PesananDummy;
     const header = headers();
     const pathname = header.get("x-current-params");
     const dateString = pathname!.split("=")[1]

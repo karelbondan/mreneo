@@ -18,9 +18,9 @@ export default function DaftarPesananSection() {
 
     useEffect(() => {
         getPesanan(cookies)
-            .then(res => { setdaftarPesanan(res); setisLoading(false); })
-            .then(_ => checkAuth(cookies))
-            .then(authErr => authErr && router.push(`/login?err=${authErr}`))
+            .then(res => { console.log(res); setdaftarPesanan(res); setisLoading(false); })
+            // .then(_ => checkAuth(cookies))
+            // .then(authErr => authErr && router.push(`/login?err=${authErr}`))
             .catch(err => { seterror(err); setisLoading(true); });
     }, [])
 
@@ -43,7 +43,7 @@ export default function DaftarPesananSection() {
 
             {/* displaying the daftar pesanan if there is no error */}
             {(!error && daftarPesanan.length > 0) && daftarPesanan.map((pesanan, index) => {
-                return <PesananCard key={pesanan.date + index} data={pesanan} pesanan_no={index + 1} />
+                return <PesananCard key={pesanan.id + index} data={pesanan} pesanan_no={index + 1} />
             })}
 
             {/* if an error exists */}

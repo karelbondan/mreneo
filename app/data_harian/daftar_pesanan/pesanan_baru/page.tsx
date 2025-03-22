@@ -22,15 +22,12 @@ export default function PesananBaru() {
   const params = useSearchParams();
 
   const [makananSudahAda, setmakananSudahAda] = useState<DataPesanan>(dataPesananInit);
-  const [dataPesanan, setdataPesanan] = useState<DaftarPesanan>({
-    ...daftarPesananInit,
-    date: timeNow.toISOString(),
-  });
+  const [dataPesanan, setdataPesanan] = useState<DaftarPesanan>({ ...daftarPesananInit });
 
   function onPositiveClick(value: DataPesanan) {
     if (value.harga < 1) return;
     const makananSudahAda = dataPesanan.pesanan.some(
-      makanan => makanan.id_makanan === value.id_makanan
+      makanan => makanan.id === value.id
     );
     if (makananSudahAda) {
       setmakananSudahAda(value);
@@ -46,7 +43,7 @@ export default function PesananBaru() {
 
   function hapusMakanan(yangDihapus: DataPesanan) {
     const updatedPesanan = dataPesanan.pesanan.filter(
-      (makanan) => yangDihapus.id_makanan !== makanan.id_makanan
+      (makanan) => yangDihapus.id !== makanan.id
     );
     setdataPesanan({ ...dataPesanan, pesanan: updatedPesanan });
   }
@@ -90,9 +87,10 @@ export default function PesananBaru() {
         {dataPesanan.pesanan.length > 0 ?
           dataPesanan.pesanan.map((makanan, index) => {
             return <UbahPesananCard
+              key={makanan.id + index}
               data={makanan}
               makanan_no={index + 1}
-              onHapusClick={() => hapusMakanan(makanan)}
+              onDeleteClick={() => hapusMakanan(makanan)}
             />
           }) :
           <p className='text-center py-10 opacity-50'>

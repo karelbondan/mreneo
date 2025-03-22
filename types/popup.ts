@@ -20,13 +20,13 @@ export type PopupHandle = {
 }
 
 export interface setPesanan {
-    index: number,
-    data?: DataPesanan,
-    action: "update" | "delete"
+    idx: number;
+    put?: number;
+    add?: DataPesanan;
+    op: "add" | "put" | "del";
 }
 
 export type TambahMakananPopupProps = {
-    setPesanan?: ({ index, data, action }: setPesanan) => void;
     onPositiveClick?: (value: any) => void;
     onNegativeClick?: () => void;
 }
