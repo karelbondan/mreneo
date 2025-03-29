@@ -8,15 +8,17 @@ import SimpanPerubahanPopup from '@/components/popup/simpan_perubahan';
 import BatalUbahPopup from '@/components/popup/batal_ubah';
 import HapusPesananPopup from '@/components/popup/hapus_pesanan';
 import { PopupHandle, setPesanan } from '@/types/popup';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import MakananSudahAdaPopup from '@/components/popup/makanan_sudah_ada';
 import { dataPesananInit } from '@/utils/declarations';
+import { getCurrentDateISO } from '@/utils/commonfunc';
 
 export default function UbahPesanan() {
   const { id } = useParams();
+  const orderIndex: { [key: string]: number } = {};
+  const router = useRouter();
   const [orderData, setOrderData] = useState<DaftarPesanan>();
   const [foodExist, setFoodExist] = useState<DataPesanan>(dataPesananInit);
-  const orderIndex: { [key: string]: number } = {};
 
   useEffect(() => {
     function getData() {
@@ -52,6 +54,26 @@ export default function UbahPesanan() {
     setOrderData({ ...orderData!, pesanan: update });
   }
 
+  async function doSave() {
+    // TODO
+    /**
+     * 1. loading start
+     * 2. separate into utils
+     */
+    // FIXME date modified is supposed to be gotten from the frontend, 
+    // passed from the previous page.
+    await fetch(`${process.env.NEXT_PUBLIC_API_URI}/pesanan/update/${id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        ...orderData, modified_date: getCurrentDateISO()
+      })
+    })
+      .then(res => res.json())
+      .then(res => console.log(res));
+    // loading end
+  }
+
   const dialogCancel = useRef<PopupHandle>(null);
   const dialogDelete = useRef<PopupHandle>(null);
   const dialogConfirm = useRef<PopupHandle>(null);
@@ -61,8 +83,12 @@ export default function UbahPesanan() {
   return (
     <div className='flex flex-col h-full'>
       {/* popup declarations */}
-      <SimpanPerubahanPopup ref={dialogConfirm} />
-      <BatalUbahPopup ref={dialogCancel} />
+      <SimpanPerubahanPopup
+        onPositiveClick={() => doSave()}
+        ref={dialogConfirm} />
+      <BatalUbahPopup
+        onPositiveClick={() => router.back()}
+        ref={dialogCancel} />
       <HapusPesananPopup ref={dialogDelete} />
       <TambahMakananPopup
         onNegativeClick={() => dialogFoodAdd.current?.hide()}
@@ -91,7 +117,7 @@ export default function UbahPesanan() {
           return <UbahPesananCard
             key={makanan.id + idx}
             data={makanan}
-            makanan_no={idx}
+            foodNo={idx}
             onDeleteClick={() => doUpdate({ idx: idx, op: 'del' })}
             onAmountChange={(amt) => doUpdate({ idx: idx, op: 'put', put: amt })}
           />

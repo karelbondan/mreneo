@@ -1,6 +1,6 @@
 import { DaftarPesanan, PemasukanData } from '@/types/common';
 import React from 'react'
-import daftar_pesanan_customer from '../daftar_pesanan/dummy_data/daftar_pesanan_customer';
+import daftar_pesanan_customer from '../pesanan/dummy/daftar_pesanan_customer';
 import Link from 'next/link';
 import { formatHarga } from '@/utils/commonfunc';
 import DateCard from '@/components/cards/date';
@@ -71,9 +71,9 @@ export default function PemasukanPage() {
       <div className='flex p-3 mx-4 bg-purple-200 rounded-lg mb-5'>
         <p>Ingin melihat detail untuk setiap makanan yang terjual? Silakan buka halaman{" "}
           <Link href={{
-            pathname: "/data_harian/daftar_pesanan/",
+            pathname: "/data/pesanan/",
             query: {
-              redirect: "/data_harian/daftar_pesanan/pemasukan"
+              redirect: "/data/pemasukan"
             }
           }}><button className='underline'><strong>daftar pesanan</strong>.</button>
           </Link>

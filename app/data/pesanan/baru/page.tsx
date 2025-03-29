@@ -89,7 +89,7 @@ export default function PesananBaru() {
             return <UbahPesananCard
               key={makanan.id + index}
               data={makanan}
-              makanan_no={index + 1}
+              foodNo={index + 1}
               onDeleteClick={() => hapusMakanan(makanan)}
             />
           }) :

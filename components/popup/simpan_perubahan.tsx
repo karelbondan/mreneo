@@ -7,7 +7,7 @@ const SimpanPerubahanPopup = forwardRef<PopupHandle, GenericPopupProps>((props, 
         <CustomPopup
             title='Simpan perubahan?'
             positiveButtonTitle='Simpan'
-            onPositiveClick={() => { }}
+            onPositiveClick={props.onPositiveClick}
             negativeButtonTitle='Tunggu dulu'
             ref={ref}
         >

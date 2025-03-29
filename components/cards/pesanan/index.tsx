@@ -10,7 +10,7 @@ export default function PesananCard(props: PesananCardProps) {
             <div className='flex justify-between items-center'>
                 <h2 className='text-lg font-semibold'>Pesanan no. {pesanan_no}</h2>
                 <Link href={{
-                    pathname: `/data_harian/daftar_pesanan/${data.id}`
+                    pathname: `/data/pesanan/${data.id}`
                 }}>
                     <button className='bg-blue-100 px-4 py-2 flex items-center space-x-2 rounded-lg active:scale-90 transition-all mb-1'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
