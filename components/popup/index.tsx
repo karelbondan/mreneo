@@ -1,9 +1,10 @@
 import { PopupHandle, PopUpProps } from '@/types/popup';
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
+import Border from '../border';
 
 // using forwardRef & imperativeHandler in child and useRef in parent
 // to allow method access from parent
-const CustomPopup = forwardRef<PopupHandle, PopUpProps>((props, ref) => {
+const Popup = forwardRef<PopupHandle, PopUpProps>((props, ref) => {
     const [visible, setvisible] = useState(false);
     // destructuring and assigning a default value
     const { dismissOnOptionClick = true } = props;
@@ -35,9 +36,11 @@ const CustomPopup = forwardRef<PopupHandle, PopUpProps>((props, ref) => {
                             </svg>
                         </button>
                     </div>
-                    <hr className='border-black/20' />
+                    <Border />
                     <p>{props.description}</p>
-                    {props.children}
+                    <div className='py-2 space-y-2'>
+                        {props.children}
+                    </div>
                     <div className={`${props.negativeButtonTitle ? "space-x-2" : ""} flex items-center justify-center pt-2`}>
                         {/* xxx?.() => optional chaining to invoke optional prop method */}
                         <button className={`${props.negativeButtonTitle ? "block" : "hidden"} px-5 py-2 ${props.negativeButtonColor ? props.negativeButtonColor : "bg-blue-200"} rounded-lg active:scale-90 transition-all`}
@@ -57,4 +60,4 @@ const CustomPopup = forwardRef<PopupHandle, PopUpProps>((props, ref) => {
     )
 })
 
-export default CustomPopup;
+export default Popup;

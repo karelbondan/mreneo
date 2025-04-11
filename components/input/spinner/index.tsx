@@ -42,7 +42,7 @@ export default function SpinnerInput(props: SpinnerInputProps) {
                 value={jumlah}
                 onChange={onInputChange}
                 onClick={() => setspinnerVisible(true)}
-                className={twMerge(`${spinnerVisible ? "z-30" : "z-0"} w-10 h-9 text-center rounded-lg`, className)}
+                className={twMerge(`${spinnerVisible ? "z-30" : "z-0"} w-10 h-9 text-center rounded-lg outline-none focus:ring focus:ring-gray-300 transition-all`, className)}
             />
         </div>
     )

@@ -18,10 +18,10 @@ export default function DaftarPesananSection() {
 
     useEffect(() => {
         getPesanan(cookies)
-            .then(res => { console.log(res); setdaftarPesanan(res); setisLoading(false); })
+            .then(res => { setdaftarPesanan(res); setisLoading(false); })
             // .then(_ => checkAuth(cookies))
             // .then(authErr => authErr && router.push(`/login?err=${authErr}`))
-            .catch(err => { seterror(err); setisLoading(true); });
+            .catch(err => { console.log(error); seterror(err); setisLoading(false); });
     }, [])
 
     return (
@@ -48,8 +48,8 @@ export default function DaftarPesananSection() {
 
             {/* if an error exists */}
             {error && (
-                <p className='text-red-400 text-center'>
-                    {`${strings.error.INT_500_ERR}:${error}`}
+                <p className='text-red-600 text-center'>
+                    {`${strings.error.ERR_OFF}`}
                 </p>
             )}
         </div>

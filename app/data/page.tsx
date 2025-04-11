@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { PopupHandle } from "@/types/popup";
-import DatePicker from "@/components/input/date_picker";
+import DatePicker from "@/components/input/date";
 import DashboardCard from "@/components/cards/dashboard";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 

@@ -2,23 +2,23 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { DaftarPesanan, DataPesanan } from '@/types/common';
 import UbahPesananCard from '@/components/cards/pesanan/ubah';
-import CustomDropdown from '@/components/input/dropdown';
-import TambahMakananPopup from '@/components/popup/tambah_makanan';
-import SimpanPerubahanPopup from '@/components/popup/simpan_perubahan';
-import BatalUbahPopup from '@/components/popup/batal_ubah';
-import HapusPesananPopup from '@/components/popup/hapus_pesanan';
+import { FSDropdown } from '@/components/input/dropdown';
 import { PopupHandle, setPesanan } from '@/types/popup';
 import { useParams, useRouter } from 'next/navigation';
-import MakananSudahAdaPopup from '@/components/popup/makanan_sudah_ada';
-import { dataPesananInit } from '@/utils/declarations';
 import { getCurrentDateISO } from '@/utils/commonfunc';
+import { OrderData } from '@/utils/declarations';
+import HapusPesananPopup from '@/components/popup/order/delete';
+import TambahMakananPopup from '@/components/popup/food/add';
+import MakananSudahAdaPopup from '@/components/popup/food/exists';
+import BatalUbahPopup from '@/components/popup/changes/cancel';
+import SimpanPerubahanPopup from '@/components/popup/changes/save';
 
 export default function UbahPesanan() {
   const { id } = useParams();
   const orderIndex: { [key: string]: number } = {};
   const router = useRouter();
   const [orderData, setOrderData] = useState<DaftarPesanan>();
-  const [foodExist, setFoodExist] = useState<DataPesanan>(dataPesananInit);
+  const [foodExist, setFoodExist] = useState<DataPesanan>({ ... new OrderData() });
 
   useEffect(() => {
     function getData() {
@@ -33,6 +33,7 @@ export default function UbahPesanan() {
 
   function doAdd(data: DataPesanan) {
     const idx = orderIndex[data.id];
+    if (data.harga < 1) { alert("Please enter a correct food amount"); return; }
     if (idx) {
       setFoodExist(data);
       dialogFoodExt.current?.show();
@@ -74,6 +75,19 @@ export default function UbahPesanan() {
     // loading end
   }
 
+  async function doDelete() {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URI}/pesanan/delete/${id}`, {
+      method: "DELETE"
+    }).then(async res => {
+      let parsed = await res.json();
+      if (!res.ok) {
+        throw parsed;
+      }
+      return parsed;
+    }).then(res => console.log(res));
+    router.back();
+  }
+
   const dialogCancel = useRef<PopupHandle>(null);
   const dialogDelete = useRef<PopupHandle>(null);
   const dialogConfirm = useRef<PopupHandle>(null);
@@ -89,7 +103,9 @@ export default function UbahPesanan() {
       <BatalUbahPopup
         onPositiveClick={() => router.back()}
         ref={dialogCancel} />
-      <HapusPesananPopup ref={dialogDelete} />
+      <HapusPesananPopup
+        onPositiveClick={() => doDelete()}
+        ref={dialogDelete} />
       <TambahMakananPopup
         onNegativeClick={() => dialogFoodAdd.current?.hide()}
         onPositiveClick={(val: DataPesanan) => doAdd(val)}
@@ -103,11 +119,12 @@ export default function UbahPesanan() {
         <div className='flex items-center justify-between'>
           <p>Metode pembayaran</p>
           <div className='w-2/5'>
-            <CustomDropdown title='Pilih metode pembayaran'
-              pilihan={["Cash", "QRIS"]}
-              pilihanString={["Cash", "QRIS"]}
+            <FSDropdown title='Pilih metode pembayaran'
               value={orderData.metode_pembayaran}
-              onChange={(val: string) => setOrderData({ ...orderData, metode_pembayaran: val })}
+              labelLoc='left'
+              selections={[{ title: "Cash" }, { title: "QRIS" }]}
+              selectionKey='title'
+              onValueChange={(v: { title: string }) => { setOrderData({ ...orderData, metode_pembayaran: v.title }) }}
             />
           </div>
         </div>

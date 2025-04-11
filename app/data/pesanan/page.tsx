@@ -21,7 +21,7 @@ export default function Pesanan() {
                 <DaftarPesananSection />
             </div>
             <div className='flex items-center justify-center p-5'>
-                <Link href={{ pathname: "/data/pesanan/pesanan_baru", query: { date: dateString } }} className='w-full'>
+                <Link href={{ pathname: "/data/pesanan/baru", query: { date: dateString } }} className='w-full'>
                     <button className='bg-green-400 p-3 w-full font-bold rounded-lg active:scale-90 transition-all'>
                         Pesanan baru
                     </button>

@@ -2,8 +2,8 @@
 import DateCard from '@/components/cards/date';
 import TimeCard from '@/components/cards/time';
 import CustomPopup from '@/components/popup';
-import SimpanPerubahanPopup from '@/components/popup/simpan_perubahan';
-import TambahBarangPopup from '@/components/popup/tambah_barang';
+import SimpanPerubahanPopup from '@/components/popup/changes/save';
+import TambahBarangPopup from '@/components/popup/expenses/add';
 import { DataPengeluaran } from '@/types/common';
 import { PopupHandle } from '@/types/popup';
 import { formatHarga } from '@/utils/commonfunc';
