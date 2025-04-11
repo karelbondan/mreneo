@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction } from "react";
+import { ComponentProps, Dispatch, PropsWithChildren, SetStateAction } from "react";
 
 export type DropDownHandle = {
     reset: () => void;
 }
 
-export type DropDownProps = {
+export interface DropDownProps extends ComponentProps<"div">, PropsWithChildren {
     title: string;
     description?: string;
     pilihan: any[];
@@ -13,6 +13,13 @@ export type DropDownProps = {
     pilihanString: string[];
     value: string;
     onChange?: (value: any) => void
+}
+
+export interface DropDownPropsUpdate extends ComponentProps<"div">, PropsWithChildren {
+    title: string;
+    descr?: string;
+    value?: string;
+    onValueChange?: (value: any) => void
 }
 
 export type DropDownItem = {

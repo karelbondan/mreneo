@@ -3,18 +3,23 @@ import CustomPopup from '@/components/popup';
 import { UbahPesananCardProps } from '@/types/card';
 import { PopupHandle } from '@/types/popup';
 import { formatHarga } from '@/utils/commonfunc';
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export default function UbahPesananCard(props: UbahPesananCardProps) {
     const { data } = props;
     const [jumlah, setjumlah] = useState(data.jumlah);
     const deleteConfirmation = useRef<PopupHandle>(null);
+
+    useEffect(() => {
+        props.onAmountChange?.(jumlah);
+    }, [jumlah]);
+
     return (
         <div>
             <CustomPopup
                 title='Hapus makanan?'
                 positiveButtonTitle='Hapus'
-                onPositiveClick={props.onHapusClick}
+                onPositiveClick={props.onDeleteClick}
                 negativeButtonTitle='Tunggu dulu'
                 ref={deleteConfirmation}
             >

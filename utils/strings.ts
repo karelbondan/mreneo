@@ -9,6 +9,12 @@ export const strings = {
         CSRF_ERR: "Galat: Token X-csrf tidak valid. Mohon login ulang"
     },
     error: {
-        INT_500_ERR: "Terjadi galat internal, silakan kontak pengurus"
+        ERR_500: "Terjadi galat internal, silakan kontak pengurus",
+        ERR_OFF: "Terjadi galat internal: kemungkinan server sedang offline. Harap kontak pengurus."
+
+    },
+    gui: {
+        PESANAN_EMPTY: "Belum ada pesanan yang ditambahkan. Tambah pesanan baru menggunakan tombol \"Pesanan baru\" di bawah.",
+        PESANAN_LOADING: "Sedang mengambil data pesanan, mohon tunggu..."
     }
 }

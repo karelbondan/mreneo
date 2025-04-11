@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 
 function formatPathname(pathname: string) {
   const splitted = pathname.split("/");
-  console.log(splitted);
   if (splitted.length > 3)
     return `${splitted[1]} - ... - ${splitted[splitted.length - 1]}`.replaceAll("_", " ")
   else
@@ -27,7 +26,8 @@ export default function Header() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
           </svg>
         </button>
-        <h1 className="font-bold text-2xl">{formattedPathName == "" ? "Dashboard - Mreneo" : formattedPathName.split(" ").map(word => word[0]?.toUpperCase() + word.slice(1)).join(" ")}</h1>
+        {/* <h1 className="font-bold text-2xl">{formattedPathName == "" ? "Dashboard - Mreneo" : formattedPathName.split(" ").map(word => word[0]?.toUpperCase() + word.slice(1)).join(" ")}</h1> */}
+        <h1 className="font-bold text-2xl">Mreneo</h1>
       </div>
     ) : null
   )

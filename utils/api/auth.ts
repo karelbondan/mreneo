@@ -60,7 +60,6 @@ export async function checkAuth(cookies: Cookies): Promise<string> {
     const sessIdVal = cookies.get(sessionId!);
     const xcsrfVal = cookies.get(xcsrf!);
 
-    console.log(sessIdVal, xcsrfVal);
     if (!sessIdVal || !xcsrfVal) {
         return strings.auth.SESS_ERR;
     }
@@ -83,8 +82,6 @@ export async function checkAuth(cookies: Cookies): Promise<string> {
     if (authRefr !== "") {
         return authRefr;
     }
-
-    console.log(xcsrfRefr, authRefr);
 
     return "";
 }

@@ -15,8 +15,9 @@ export type PesananCardProps = {
 
 export type UbahPesananCardProps = {
     data: DataPesanan;
-    makanan_no: number;
-    onHapusClick: () => void;
+    foodNo: number;
+    onDeleteClick: () => void;
+    onAmountChange?: (amount: number) => void;
 }
 
 export type DataHarianInteractiveProps = {
@@ -25,5 +26,6 @@ export type DataHarianInteractiveProps = {
 }
 
 export interface DateCardProps extends PropsWithChildren {
-    date: Date
+    date: Date;
+    disable_auth?: boolean;
 }

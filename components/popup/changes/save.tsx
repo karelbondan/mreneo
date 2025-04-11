@@ -1,18 +1,18 @@
 import React, { forwardRef } from 'react'
-import CustomPopup from '.'
 import { GenericPopupProps, PopupHandle } from '@/types/popup';
+import Popup from '..';
 
 const SimpanPerubahanPopup = forwardRef<PopupHandle, GenericPopupProps>((props, ref) => {
     return (
-        <CustomPopup
+        <Popup
             title='Simpan perubahan?'
             positiveButtonTitle='Simpan'
-            onPositiveClick={() => { }}
+            onPositiveClick={props.onPositiveClick}
             negativeButtonTitle='Tunggu dulu'
             ref={ref}
         >
             <p>Simpan perubahan data ke database?</p>
-        </CustomPopup>
+        </Popup>
     )
 })
 

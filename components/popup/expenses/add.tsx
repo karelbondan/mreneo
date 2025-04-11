@@ -1,9 +1,9 @@
 import { PopupHandle, TambahBarangPopupProps } from '@/types/popup'
 import React, { forwardRef, useEffect, useState } from 'react'
-import CustomPopup from '.'
 import { dataBarangInit } from '@/utils/declarations';
-import SpinnerInput from '../input/spinner';
 import { formatHarga } from '@/utils/commonfunc';
+import Popup from '..';
+import SpinnerInput from '@/components/input/spinner';
 
 const TambahBarangPopup = forwardRef<PopupHandle, TambahBarangPopupProps>((props, ref) => {
     const [dataBarang, setdataBarang] = useState(dataBarangInit);
@@ -34,7 +34,7 @@ const TambahBarangPopup = forwardRef<PopupHandle, TambahBarangPopupProps>((props
     const innerContainerStyle = 'grid grid-cols-[40%_60%] items-center';
 
     return (
-        <CustomPopup
+        <Popup
             title='Tambahkan barang'
             positiveButtonTitle='Tambahkan'
             negativeButtonTitle='Batal'
@@ -93,7 +93,7 @@ const TambahBarangPopup = forwardRef<PopupHandle, TambahBarangPopupProps>((props
                     />
                 </div>
             </div>
-        </CustomPopup>
+        </Popup>
     )
 })
 
